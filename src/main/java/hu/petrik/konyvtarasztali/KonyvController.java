@@ -60,6 +60,39 @@ public class KonyvController {
     }
 
     public void onDeleteClick(ActionEvent actionEvent) {
+        Konyv selected = getSelectedKonyv();
+        if (selected == null) return;
 
+        Optional<ButtonType> optionalButtonType = alert(Alert.AlertType.CONFIRMATION,"Biztos, hogy törölni szeretné a kiválasztott könyvet?","");
+        if (optionalButtonType.isEmpty() || !optionalButtonType.get().equals(ButtonType.OK) && !optionalButtonType.get().equals(ButtonType.YES)){
+            return;
+        }
+        try {
+            if (db.deleteKonyv(selected.getId())) {
+                alert(Alert.AlertType.WARNING, "Sikeres Törlés!", "");
+            }else{
+                alert(Alert.AlertType.WARNING, "Sikertelen törlés!", "");
+            }
+            readKonyv();
+        } catch (SQLException e) {
+            sqlAlert(e);
+        }
+    }
+
+    private void sqlAlert(SQLException e) {
+        Platform.runLater(() -> {
+            alert(Alert.AlertType.WARNING, "Hiba történt az adatbázis kapcsolat kialakításakor!",
+                    e.getMessage());
+        });
+    }
+
+    private Konyv getSelectedKonyv() {
+        int selectedIndex = bookTableView.getSelectionModel().getSelectedIndex();
+        if (selectedIndex == -1){
+            alert(Alert.AlertType.WARNING, "Előbb válasszon ki egy könyvet a táblázatból!","");
+            return null;
+        }
+        Konyv selected = bookTableView.getSelectionModel().getSelectedItem();
+        return selected;
     }
 }

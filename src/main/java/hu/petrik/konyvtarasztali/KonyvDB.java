@@ -34,4 +34,11 @@ public class KonyvDB {
         }
         return konyvek;
     }
+
+    public boolean deleteKonyv(int id) throws SQLException {
+        String sql = "DELETE FROM books WHERE id = ?";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt.setInt(1, id);
+        return stmt.executeUpdate() > 0;
+    }
 }
