@@ -19,7 +19,7 @@ public class Statisztika {
                 throw new RuntimeException(e);
             }
         }else{
-            HelloApplication.main(args);
+            App.main(args);
         }*/
         try {
             db = new KonyvDB();

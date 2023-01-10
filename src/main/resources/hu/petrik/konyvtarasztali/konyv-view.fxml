@@ -7,25 +7,21 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="hu.petrik.konyvtarasztali.HelloController">
+<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="hu.petrik.konyvtarasztali.KonyvController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
-   <HBox>
-      <children>
-          <Button fx:id="deleteButton" alignment="TOP_LEFT" onAction="#onDeleteClick" text="Törlés" />
-      </children>
-   </HBox>
-   <HBox prefHeight="500.0" prefWidth="800.0">
-      <children>
-         <TableView prefWidth="800.0">
-           <columns>
-             <TableColumn fx:id="cimCol" prefWidth="200.0" text="Cím" />
-             <TableColumn fx:id="szerzoCol" prefWidth="200.0" text="Szerző" />
-               <TableColumn fx:id="kiadasCol" prefWidth="200.0" text="Kiadás éve" />
-               <TableColumn fx:id="oldalszamCol" prefWidth="200.0" text="Oldalszám" />
-           </columns>
-         </TableView>
-      </children>
-   </HBox>
+    <HBox>
+        <Button fx:id="deleteButton" alignment="TOP_LEFT" onAction="#onDeleteClick" text="Törlés"/>
+    </HBox>
+    <HBox prefHeight="500.0" prefWidth="800.0">
+        <TableView prefWidth="800.0" fx:id="bookTableView">
+            <columns>
+                <TableColumn fx:id="cimCol" prefWidth="200.0" text="Cím"/>
+                <TableColumn fx:id="szerzoCol" prefWidth="200.0" text="Szerző"/>
+                <TableColumn fx:id="kiadasCol" prefWidth="200.0" text="Kiadás éve"/>
+                <TableColumn fx:id="oldalszamCol" prefWidth="200.0" text="Oldalszám"/>
+            </columns>
+        </TableView>
+    </HBox>
 </VBox>
