@@ -1,7 +1,10 @@
 package hu.petrik.konyvtarasztali;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
 
 public class HelloController {
 
@@ -16,8 +19,6 @@ public class HelloController {
     @FXML
     private TableColumn oldalszamCol;
 
-    @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
+    public void onDeleteClick(ActionEvent actionEvent) {
     }
 }

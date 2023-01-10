@@ -13,10 +13,10 @@
     </padding>
    <HBox>
       <children>
-          <Button fx:id="deleteButton" alignment="TOP_LEFT" onAction="#onHelloButtonClick" text="Törlés" />
+          <Button fx:id="deleteButton" alignment="TOP_LEFT" onAction="#onDeleteClick" text="Törlés" />
       </children>
    </HBox>
-   <HBox prefHeight="400.0" prefWidth="800.0">
+   <HBox prefHeight="500.0" prefWidth="800.0">
       <children>
          <TableView prefWidth="800.0">
            <columns>

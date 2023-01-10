@@ -61,4 +61,9 @@ public class Konyv {
     public void setPage_count(int page_count) {
         this.page_count = page_count;
     }
+
+    @Override
+    public String toString() {
+        return "\nSzerző: " + this.author + "\nCím: " + this.title + "\nKiadás éve: " + this.publish_year + "\nOldalszám: " + this.page_count;
+    }
 }
