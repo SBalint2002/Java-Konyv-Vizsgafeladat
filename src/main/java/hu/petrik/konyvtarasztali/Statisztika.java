@@ -10,17 +10,6 @@ public class Statisztika {
     private static int konyvindex;
 
     public static void main(String[] args) {
-        /*if (Arrays.asList(args).contains("--stat")){
-            try{
-                db = new KonyvDB();
-                //ListBooks();
-                feladatok();
-            }catch (SQLException e){
-                throw new RuntimeException(e);
-            }
-        }else{
-            App.main(args);
-        }*/
         try {
             db = new KonyvDB();
             //ListBooks();
@@ -76,7 +65,20 @@ public class Statisztika {
         System.out.println("\tSzerző: " + konyvek.get(index).getAuthor() + "\n\tCím: " + konyvek.get(index).getTitle() + "\n\tKiadás éve: " + konyvek.get(index).getPublish_year() + "\n\tOldalszám: " + konyvek.get(index).getPage_count());
 
         //Legtöbb könyvvel rendelkező szerző
-        Map<String, Integer> counts = new HashMap<>();
+        Map<String, Integer> authorBookCount = new HashMap<>();
+        for (Konyv konyv : konyvek) {
+            authorBookCount.putIfAbsent(konyv.getAuthor(), 0);
+            authorBookCount.put(konyv.getAuthor(), authorBookCount.get(konyv.getAuthor())+1);
+        }
+        int legtobbKonyv = 0;
+        String szerzo = "";
+        for (Map.Entry<String, Integer> bejegyzes : authorBookCount.entrySet()){
+            if (bejegyzes.getValue() > legtobbKonyv) {
+                legtobbKonyv = bejegyzes.getValue();
+                szerzo = bejegyzes.getKey();
+            }
+        }
+        System.out.println("A legtöbb könyvvel rendelkező szerző: " + szerzo);
 
 
         //Könyv szerző keresése
@@ -91,9 +93,9 @@ public class Statisztika {
                 break;
             }
         }
-        if (vane){
+        if (vane) {
             System.out.println("Az megadott könyv szerzője: " + konyvek.get(konyvindex).getAuthor());
-        } else{
+        } else {
             System.out.println("Nincs ilyen könyv");
         }
     }
