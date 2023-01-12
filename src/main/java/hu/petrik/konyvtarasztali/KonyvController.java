@@ -39,8 +39,8 @@ public class KonyvController {
             readKonyv();
         } catch (SQLException e) {
             Platform.runLater(() -> {
-                alert(Alert.AlertType.WARNING, "Hiba történt az adatbázis kapcsolat kialakításakor!",
-                        e.getMessage());
+                alert(Alert.AlertType.WARNING, "Hiba történt az adatbázis kapcsolat kialakításakor!", e.getMessage());
+                Platform.exit();
             });
         }
     }
